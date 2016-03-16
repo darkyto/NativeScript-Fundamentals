@@ -1,17 +1,27 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded">
-  <StackLayout>
-    <Label id="message" text="{{ oldMessage }}" class="lbl-main-page"/>
-    <TextField id="newMessage" text="{{ newMessage }}" class="tf-main-page"/>    
-    <Button id="changeIt" text="Change message!" tap="{{ changeIt }}" class="btn=main-page"/>
-    <TextField id="newMessageToAdd" text="{{ newMessageToAdd }}" class="tf-main-page"/>    
-    <Button text="Add message!" tap="{{ addMessage }}" class="btn=main-page"/>
-    <ListView items="{{ items }}">
-        <ListView.itemTemplate>
-            <StackLayout orientation="vertical">
-                <Label text="{{ name }}" textWrap="true" class="item" />
-                <Label text="{{ id }}" textWrap="true" class="item" />
-            </StackLayout>
-        </ListView.itemTemplate>
-    </ListView>
-  </StackLayout>
+    <Page.actionBar>
+        <ActionBar title="Test NativeScript App" icon="">
+            <NavigationButton text="Back" icon="" tap="" />
+            <ActionBar.actionItems>
+                <ActionItem icon="" text="Left" tap="" ios.position="left" />
+                <ActionItem icon="" text="Right" tap="" ios.position="right" />
+            </ActionBar.actionItems>
+        </ActionBar>
+    </Page.actionBar>
+    <StackLayout>
+        <Label id="message" text="{{ oldMessage }}" class="lbl-main-page"/>
+        <TextField id="newMessage" text="{{ newMessage }}" class="tf-main-page"/>          
+        <Button id="changeIt" text="Change message!" tap="{{ changeIt }}" class="btn-main-page"/>
+        
+        <TextField id="newMessageToAdd" text="{{ newMessageToAdd }}" class="tf-main-page"/>       
+        <Button text="Add message!" tap="{{ addMessage }}" class="btn-main-page"/>>
+        <ListView items="{{ items }}" class='lv-items' itemTap="onItemTap" itemLoading="onItemLoading" >
+            <ListView.itemTemplate>
+                <StackLayout orientation="vertical" class='st-item'>
+                    <Label text="{{ name }}" textWrap="true" class="item-name"/>
+                    <Label text="{{ id }}" textWrap="true" class="item-id"/>
+                </StackLayout>
+            </ListView.itemTemplate>
+        </ListView>
+    </StackLayout>
 </Page>

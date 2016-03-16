@@ -31,9 +31,11 @@ class ViewModel extends Observable {
         super();
 
         this.oldMessage = 'Default';
+        this.newMessage = 'Change the Default Here';
+        this.newMessageToAdd = 'Add Your New Message ';
         this.items = new ObservableArray<Item>([
-            new Item('item 1'),
-            new Item('item 22')
+            new Item('Sample Message One'),
+            new Item('Another Sample Message')
         ]);
     }
 
@@ -64,4 +66,10 @@ let pageLoaded = (args: EventData) => {
     console.log("Screen scale: " + platformModule.screen.mainScreen.scale);
 }
 
-export { pageLoaded }
+let onItemTap = (args) => {
+    var tappedItemView  = args.view;
+    var tappedItemIndex = args.index;
+    tappedItemView.backgroundColor = '#000';
+}
+
+export { pageLoaded, onItemTap }

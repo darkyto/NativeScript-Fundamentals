@@ -20,9 +20,11 @@ var ViewModel = (function (_super) {
     function ViewModel() {
         _super.call(this);
         this.oldMessage = 'Default';
+        this.newMessage = 'Change the Default Here';
+        this.newMessageToAdd = 'Add Your New Message ';
         this.items = new observable_array_1.ObservableArray([
-            new Item('item 1'),
-            new Item('item 22')
+            new Item('Sample Message One'),
+            new Item('Another Sample Message')
         ]);
     }
     ViewModel.prototype.changeIt = function () {
@@ -49,4 +51,10 @@ var pageLoaded = function (args) {
     console.log("Screen scale: " + platformModule.screen.mainScreen.scale);
 };
 exports.pageLoaded = pageLoaded;
+var onItemTap = function (args) {
+    var tappedItemView = args.view;
+    var tappedItemIndex = args.index;
+    tappedItemView.backgroundColor = '#000';
+};
+exports.onItemTap = onItemTap;
 //# sourceMappingURL=main-page.js.map
