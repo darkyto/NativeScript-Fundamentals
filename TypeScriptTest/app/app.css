@@ -1,0 +1,15 @@
+﻿.lbl-main-page {
+    font-size: 48;
+    horizontal-align: center;
+    margin: 20;
+}
+
+.tf-main-page {
+    font-size: 42;
+}
+
+.btn-main-page {
+    font-size: 20;
+    color: #284848;
+    horizontal-align: center;
+}

@@ -1,0 +1,7 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded">
+  <StackLayout>
+    <Label id="message" text="{{ oldMessage }}" class="lbl-main-page"/>
+    <TextField id="newMessage" text="{{ newMessage }}" class="tf-main-page"/>    
+    <Button id="changeIt" text="Change message!" tap="{{ changeIt }}" class="btn=main-page"/>
+  </StackLayout>
+</Page>

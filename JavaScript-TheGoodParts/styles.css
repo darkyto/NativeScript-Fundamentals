@@ -1,0 +1,10 @@
+button {
+	background-color: #CCC;
+	width: 120;
+	height: 40;
+	font-family: Consolas;
+	font-size: 18;
+	border: 2px solid black;
+	border-radius: 20px;
+	margin: 10;
+}
