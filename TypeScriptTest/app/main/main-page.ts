@@ -1,20 +1,59 @@
+import { Observable, EventData  } from 'data/observable';
+import { ObservableArray } from 'data/observable-array';
+
 import { Page } from 'ui/page';
-import { Observable } from 'data/observable';
-import { EventData } from 'data/observable';
 
 import platformModule = require('platform');
 
-let viewModel = new Observable({
-    oldMessage: 'Default Message',
-    newMessage: '',
-    changeIt: function(args:EventData) {
+/**
+ * Item
+ */
+class Item {
+    name: string;
+    id: string;
+    
+    constructor(name: string) {
+        this.name = name;
+        this.id = new Date().getTime().toString();
+    }
+}
+
+/**
+ * ViewModel extends Observable
+ */
+class ViewModel extends Observable {
+    oldMessage: 'Custom Header';
+    newMessage: '';
+    newMessageToAdd: '';
+    items: ObservableArray<Item>;
+      
+    constructor() {
+        super();
+        
+        this.items = new ObservableArray<Item>([
+            new Item('item 1'),
+            new Item('item 22')
+        ]);
+    }
+    
+    changeIt() {
         this.set('oldMessage', this.get('newMessage'));
     }  
-})
+    
+    addMessage() {
+        this.items.push(new Item(this.get('newMessageToAdd')));
+        this.set('newMessageToAdd', '');
+        console.log(this.items.join(" "));
+    }
+}
+
+let viewModel = new ViewModel();
 
 let pageLoaded = (args:EventData) => {
     let page = <Page>args.object;
     page.bindingContext = viewModel;
+    
+    console.log("msg: " + viewModel.oldMessage);
     
     console.log("Device model: " + platformModule.device.model);
     console.log("Device type: " + platformModule.device.deviceType);

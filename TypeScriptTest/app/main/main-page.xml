@@ -3,5 +3,12 @@
     <Label id="message" text="{{ oldMessage }}" class="lbl-main-page"/>
     <TextField id="newMessage" text="{{ newMessage }}" class="tf-main-page"/>    
     <Button id="changeIt" text="Change message!" tap="{{ changeIt }}" class="btn=main-page"/>
+    <TextField id="newMessageToAdd" text="{{ newMessageToAdd }}" class="tf-main-page"/>    
+    <Button text="Add message!" tap="{{ addMessage }}" class="btn=main-page"/>
+    <ListView items="{{ items }}">
+        <ListView.itemTemplate>
+            <Label text="{{ name }}" textWrap="true" class="item" />
+        </ListView.itemTemplate>
+    </ListView>
   </StackLayout>
 </Page>
