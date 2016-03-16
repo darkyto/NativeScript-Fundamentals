@@ -8,7 +8,7 @@ var platformModule = require('platform');
 var Item = (function () {
     function Item(name) {
         this.name = name;
-        this.id = new Date().getTime().toString();
+        this.id = new Date().getTime();
     }
     return Item;
 }());
@@ -19,6 +19,7 @@ var ViewModel = (function (_super) {
     __extends(ViewModel, _super);
     function ViewModel() {
         _super.call(this);
+        this.oldMessage = 'Default';
         this.items = new observable_array_1.ObservableArray([
             new Item('item 1'),
             new Item('item 22')
@@ -38,7 +39,6 @@ var viewModel = new ViewModel();
 var pageLoaded = function (args) {
     var page = args.object;
     page.bindingContext = viewModel;
-    console.log("msg: " + viewModel.oldMessage);
     console.log("Device model: " + platformModule.device.model);
     console.log("Device type: " + platformModule.device.deviceType);
     console.log("OS: " + platformModule.device.os);

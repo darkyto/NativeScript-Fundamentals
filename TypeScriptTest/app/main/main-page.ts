@@ -10,11 +10,11 @@ import platformModule = require('platform');
  */
 class Item {
     name: string;
-    id: string;
-    
+    id: number;
+
     constructor(name: string) {
         this.name = name;
-        this.id = new Date().getTime().toString();
+        this.id = new Date().getTime();
     }
 }
 
@@ -22,24 +22,25 @@ class Item {
  * ViewModel extends Observable
  */
 class ViewModel extends Observable {
-    oldMessage: 'Custom Header';
-    newMessage: '';
-    newMessageToAdd: '';
+    oldMessage: string;
+    newMessage: string;
+    newMessageToAdd: string;
     items: ObservableArray<Item>;
-      
+
     constructor() {
         super();
-        
+
+        this.oldMessage = 'Default';
         this.items = new ObservableArray<Item>([
             new Item('item 1'),
             new Item('item 22')
         ]);
     }
-    
+
     changeIt() {
         this.set('oldMessage', this.get('newMessage'));
-    }  
-    
+    }
+
     addMessage() {
         this.items.push(new Item(this.get('newMessageToAdd')));
         this.set('newMessageToAdd', '');
@@ -49,12 +50,10 @@ class ViewModel extends Observable {
 
 let viewModel = new ViewModel();
 
-let pageLoaded = (args:EventData) => {
+let pageLoaded = (args: EventData) => {
     let page = <Page>args.object;
     page.bindingContext = viewModel;
-    
-    console.log("msg: " + viewModel.oldMessage);
-    
+
     console.log("Device model: " + platformModule.device.model);
     console.log("Device type: " + platformModule.device.deviceType);
     console.log("OS: " + platformModule.device.os);

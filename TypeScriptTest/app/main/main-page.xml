@@ -7,7 +7,10 @@
     <Button text="Add message!" tap="{{ addMessage }}" class="btn=main-page"/>
     <ListView items="{{ items }}">
         <ListView.itemTemplate>
-            <Label text="{{ name }}" textWrap="true" class="item" />
+            <StackLayout orientation="vertical">
+                <Label text="{{ name }}" textWrap="true" class="item" />
+                <Label text="{{ id }}" textWrap="true" class="item" />
+            </StackLayout>
         </ListView.itemTemplate>
     </ListView>
   </StackLayout>
